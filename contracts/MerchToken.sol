@@ -64,12 +64,12 @@ contract MerchToken is ERC721, Ownable {
 
         // ***********TO DO:*************  Generate psedorandom numbers
         // by running blocktimestamp+address -> blackbox hashing function -> determine from last digit of result
-        bytes32 hash1 = 
-        bytes32 hash2 = 
+        bytes32 hash1 = SHA256(block.timestamp + block.address);
+        bytes32 hash2 = keccak256(hash1);
         uint256 result = uint256(hash2);
 
-        uint256 _merchType = 
-        uint256 _tag = 
+        uint256 _merchType = result%10;
+        uint256 _tag = result%5;
 
         require(_tag <= 4, "Failed random check, ID too large");
         require(_merchType <= 9, "Failed random check, tagID too large");
@@ -87,7 +87,7 @@ contract MerchToken is ERC721, Ownable {
         });
 
         //*****TO:DO****** once a token is minted, tell the contract by changing one variable
-        
+        mapping(uint256 => MerchInfo) tokenInfos;
 
         emit MerchToken(msg.sender, index);
     }
