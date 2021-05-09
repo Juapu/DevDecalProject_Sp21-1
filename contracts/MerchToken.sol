@@ -140,7 +140,10 @@ contract MerchToken is ERC721, Ownable {
     //******TO DO************
     // Changes the price that must be paid to buy a particular token
     function changePrice(uint256 _tokenId, uint256 _newPrice) public {
-
+        require(_newPrice != 0);
+        require(tokenInfos[_id].price > 0);
+        require(ownerOf(_tokenId) == msg.sender);
+        tokenInfos[_tokenId].price = _newPrice;
     }
 
     // Allow a token to be sold
