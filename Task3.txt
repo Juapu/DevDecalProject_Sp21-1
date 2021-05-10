@@ -1,0 +1,10 @@
+1. Web3 by itself isn't able to communicate with the blockchain so we give it a
+provider object. We then call web3 functions to interact with the etherium network
+like getting an account and contract instance which deals with the provider under
+the hood. Because a contract instance is created, any call the user makes will be
+converted to an ABI call.
+2. I will attempt to explain the buyloot function. The function listens to an event.
+contracts and accounts are set to their respective constant values. The event is
+canceled if it is cancelable. Otherwise the state is set to loading. The contracts
+buyToken method is called, loot is transferred, and buying is set to null as
+there is no more buying going on. Errors will be caught and an alert will be thrown.

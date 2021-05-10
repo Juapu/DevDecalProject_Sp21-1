@@ -34,7 +34,7 @@ class App extends Component {
         MerchToken.abi,
         deployedNetwork && deployedNetwork.address,
       );
-      
+
       window.contract = instance;
       const tags = (await instance.methods.tags().call()).split(',');
       const merchTypes = (await instance.methods.merchTypes().call()).split(',');
@@ -131,8 +131,8 @@ class App extends Component {
         <section className="buy">
           <h2>Big deals for only the biggest bears</h2>
           <div className="items">
-            { this.state.initializing ? <span className="initing">Loading loot...</span> : 
-            Array.from(Array(10), (_,i) => i).map(i => this.state.available[i] ? 
+            { this.state.initializing ? <span className="initing">Loading loot...</span> :
+            Array.from(Array(10), (_,i) => i).map(i => this.state.available[i] ?
               <div key={i} className="card buyable" tabIndex="0" onClick={() => this.setState({ buying: this.state.available[i] })}>
               <div className="tag">{this.state.available[i].tag}</div>
               <div className="img" style={{backgroundImage: `url("${this.state.available[i].picture}")`}}></div>
