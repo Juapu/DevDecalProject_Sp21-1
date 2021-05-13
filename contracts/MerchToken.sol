@@ -64,7 +64,7 @@ contract MerchToken is ERC721, Ownable {
 
         // ***********TO DO:*************  Generate psedorandom numbers
         // by running blocktimestamp+address -> blackbox hashing function -> determine from last digit of result
-        bytes32 hash1 = sha256(block.timestamp + address(this));
+        bytes32 hash1 = sha256(block.timestamp + msg.sender);
         bytes32 hash2 = keccak256(hash1);
         uint256 result = uint256(hash2);
 
